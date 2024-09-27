@@ -1,0 +1,51 @@
+.banner {
+    text-align: center;
+    font-family: 'Nunito', Arial, sans-serif;
+    padding: 160px 20px 120px;
+    color: white;
+    background-color: #009cdf;
+    background-image: 
+        linear-gradient(45deg, #00b7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #00b7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #00b7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #00b7eb 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+.banner h1 {
+    font-size: 4rem; /* Adjusted to use rem units */
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.banner p {
+    font-size: 1.4rem; /* Adjusted to use rem units */
+    margin-bottom: 25px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem; /* Adjusted to use rem units */
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #3776ab; /* Slightly darker Python blue */
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.cta-button:hover {
+    background-color: #ffd43b; /* Python yellow */
+    color: #3776ab;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+

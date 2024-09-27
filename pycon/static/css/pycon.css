@@ -1,0 +1,181 @@
+html {
+    font-size: 18px; /* Increased base font size */
+}
+
+body {
+    line-height: 1.6; /* Improved readability with increased line height */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #3776ab; /* Python blue */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: #ffd43b; /* Python yellow */
+    border-bottom-color: #ffd43b;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.content a {
+    color: #3776ab; /* Python blue */
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    padding-left: 1.2em; /* 为图标留出空间 */
+}
+
+.content a:hover {
+    color: #ffd43b; /* Python yellow */
+    border-bottom-color: #ffd43b;
+}
+
+.content a::before {
+    content: "\f0c1"; /* Font Awesome 链接图标的 Unicode */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.86em;
+    position: absolute;
+    left: 0;
+    transform: translateY(20%);
+    font-size: 0.8em;
+}
+
+
+.navbar {
+    background-color: #3776ab;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffd43b;
+}
+
+footer {
+    background-color: #3776ab;
+    color: #ffffff;
+    padding: 2rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffd43b;
+    border-bottom-color: transparent;
+}
+
+footer i {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin: 0 0.5rem;
+}
+
+.past-conferences {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.past-conferences li {
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.past-conferences a {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.past-conferences a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+    
+    .past-conferences {
+        justify-content: center;
+    }
+}
