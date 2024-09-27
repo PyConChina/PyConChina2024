@@ -64,7 +64,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "pycon.urls"
 BUILD_DIR = os.path.join(BASE_DIR, "_build")
-BAKERY_VIEWS = ("wagtailbakery.views.AllPublishedPagesView",)
+BAKERY_VIEWS = (
+    "wagtailbakery.views.AllPublishedPagesView",
+    "bakery.views.Buildable404View",
+)
 
 TEMPLATES = [
     {

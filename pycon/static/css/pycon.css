@@ -5,7 +5,7 @@ html {
 body {
     line-height: 1.6; /* Improved readability with increased line height */
     margin: 0;
-    padding: 0;
+    padding: 64.8px 0 0 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;

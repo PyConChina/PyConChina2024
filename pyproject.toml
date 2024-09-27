@@ -20,4 +20,5 @@ distribution = false
 [tool.pdm.scripts]
 migrate = "python manage.py migrate --noinput"
 dev = "python manage.py runserver"
-start = "gunicorn pycon.wsgi:application"
+preview = "python manage.py buildserver"
+build = "python manage.py build"
