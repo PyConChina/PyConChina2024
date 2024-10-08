@@ -9,6 +9,21 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #009cdf;
+    background-image: 
+        linear-gradient(to right, 
+            rgba(0, 156, 223, 0) 0%,
+            rgba(0, 156, 223, 0) 20%,
+            rgba(0, 156, 223, 1) 40%,
+            rgba(0, 156, 223, 1) 100%
+        ),
+        linear-gradient(45deg, #00b7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #00b7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #00b7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #00b7eb 75%);
+    background-size: 100% 100%, 40px 40px, 40px 40px, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 20px, 20px -20px, -20px 0px;
+    background-repeat: no-repeat, repeat, repeat, repeat, repeat;
 }
 
 h2 {
@@ -33,9 +48,8 @@ a:hover {
 }
 
 .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    margin-top: -60px;
+    margin-bottom: 60px;
 }
 
 .content a {
@@ -63,6 +77,9 @@ a:hover {
     font-size: 0.8em;
 }
 
+.content img {
+    max-width: 100%;
+}
 
 .navbar {
     background-color: #3776ab;
@@ -177,5 +194,24 @@ footer i {
     
     .past-conferences {
         justify-content: center;
+    }
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .card-body {
+        display: flex;
+        align-items: center;
+        gap: 1em;
     }
 }
