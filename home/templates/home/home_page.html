@@ -13,11 +13,13 @@
     <p>{{ page.date }}・{{ page.venue }}</p>
     <a href="#" class="cta-button">敬请期待</a>
 </section>
-<main class="content">
-    <section class="card">
+<main>
+    <div class="card">
         <div class="card-body">
-            {{ page.about|richtext }}
+            <div class="content">
+                {{ page.about|richtext }}
+            </div>
         </div>
-    </section>
+    </div>
 </main>
 {% endblock %}

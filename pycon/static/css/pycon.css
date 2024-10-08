@@ -48,8 +48,7 @@ a:hover {
 }
 
 .content {
-    margin-top: -60px;
-    margin-bottom: 60px;
+    overflow: hidden;
 }
 
 .content a {
@@ -79,6 +78,12 @@ a:hover {
 
 .content img {
     max-width: 100%;
+}
+
+.richtext-image.right {
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 .navbar {
@@ -119,7 +124,7 @@ footer {
     background-color: #3776ab;
     color: #ffffff;
     padding: 2rem;
-    margin-top: auto;
+    margin-top: 60px;
 }
 
 .footer-content {
@@ -208,10 +213,3 @@ footer i {
     margin: 0 auto;
 }
 
-@media (min-width: 992px) {
-    .card-body {
-        display: flex;
-        align-items: center;
-        gap: 1em;
-    }
-}
