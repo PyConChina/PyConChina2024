@@ -47,6 +47,17 @@ a:hover {
     border-bottom-color: #ffd43b;
 }
 
+main {
+    margin: 0 10px;
+}
+
+@media (min-width: 1200px) {
+    main {
+        margin: 0 auto;
+        width: 1200px;
+    }
+}
+
 .content {
     overflow: hidden;
 }
@@ -206,10 +217,26 @@ footer i {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.05);
-    padding: 2rem;
     position: relative;
+    padding: 1rem;
     z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
+@media (min-width: 992px) {
+    .card {
+        padding: 1rem 2rem;
+    }
+}
+
+.title {
+    border: 2px solid #4B8BBE;  /* Python blue */
+    background-color: #FFD43B;  /* Python yellow */
+    color: white;  /* White text */
+    text-shadow:  2px  2px 0 #4B8BBE;  /* Python blue outline */
+    padding: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 10px;  /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
