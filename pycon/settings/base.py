@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     "base",
     "home",
     "supporter",
+    "talk",
+    "schedule",
     "search",
     "bakery",
     "wagtailbakery",

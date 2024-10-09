@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+<style>
+.authors {
+    list-style: none;
+    padding: 0;
+}
+.author {
+    display: flex;
+    align-items: flex-start;
+}
+.author + .author {
+    margin-top: 1rem;
+}
+
+.author > div:first-child {
+    flex-grow: 1;
+}
+.author-info {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+.author-name {
+    font-weight: bold;
+    font-size: 1.75em;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1 class="title">
+        {{ page.title }}
+    </h1>
+    <span class="talk-badge {{ page.type }}">
+        {% if page.type == 'lightning' %}
+            <i class="fa-solid fa-bolt"></i>
+        {% elif page.type == 'keynote' %}
+            <i class="fa-solid fa-medal"></i>
+        {% endif %}
+        {{ page.type|title }}
+    </span>
+    <div class="card">
+        <div class="card-body">
+            <ul class="authors">
+                {% for author in page.authors.all %}
+                    <li class="author">
+                        <div>
+                            <div class="author-info">
+                                <span class="author-name">{{ author.name }}</span>
+                                <span class="author-bio">{{ author.bio }}</span>
+                            </div>
+                            <div class="content">{{ author.introduction|richtext }}</div>
+                        </div>
+                        {% if author.avatar %}
+                            {% image author.avatar width-240 %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if page.schedule %}
+                <div class="schedule">
+                    <i class="fa-solid fa-clock"></i>
+                    {{ page.schedule.start_time }} - {{ page.schedule.end_time }}
+                    <i class="fa-solid fa-location-arrow"></i>
+                    {{ page.schedule.room.name }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% if page.abstract %}
+        <div class="card">
+            <div class="card-header">摘要</div>
+            <div class="card-body">
+                {{ page.abstract }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="card">
+        <div class="card-body content">
+            {{ page.body|richtext }}
+        </div>
+    </div>
+</main>
+{% endblock %}

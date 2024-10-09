@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+<style>
+.talk-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.talk-item > div:first-child {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .talk-item > img {
+        display: none;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1 class="title">{{ page.title }}</h1>
+    <div class="card">
+        <div class="card-body content">
+            {{ page.body|richtext }}
+        </div>
+    </div>
+    {% for child in page.get_children %}
+        <div class="card">
+            <h2 class="card-header">
+                <a href="{% pageurl child %}">{{ child.title }}</a>
+                <span class="talk-badge {{ child.specific.type }}">
+                    {% if child.specific.type == 'lightning' %}
+                        <i class="fa-solid fa-bolt"></i>
+                    {% elif child.specific.type == 'keynote' %}
+                        <i class="fa-solid fa-medal"></i>
+                    {% endif %}
+                    {{ child.specific.type|title }}
+                </span>
+            </h2>
+            <div class="card-body">
+                <div class="talk-item">
+                    <div>
+                        {{ child.specific.abstract }}
+                        <div class="speak-by">
+                            <h3>演讲者</h3>
+                            <ul>
+                                {% for author in child.specific.authors.all %}
+                                    <li>
+                                        <span>{{ author.name }}</span>
+                                        <span>- {{ author.bio }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% with first_author=child.specific.authors.all.first %}
+                        {% if first_author.avatar %}
+                            {% image first_author.avatar width-240 %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</main>
+{% endblock %}
