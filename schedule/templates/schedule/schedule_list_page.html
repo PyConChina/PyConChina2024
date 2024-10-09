@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% block content %}
+<main>
+    <h1 class="title">{{ page.title }}</h1>
+    <div class="card">
+        <div class="card-body content">
+            {{ page.body|richtext }}
+        </div>
+    </div>
+</main>
+{% endblock %}
