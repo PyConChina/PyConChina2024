@@ -1,6 +1,7 @@
 from django import forms
 from django.db import models
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
@@ -19,7 +20,7 @@ class SupporterPage(Page):
     ]
 
 
-class SupporterTier(Orderable):
+class SupporterTier(Orderable, ClusterableModel):
     page = ParentalKey(
         SupporterPage, on_delete=models.CASCADE, related_name="supporters"
     )

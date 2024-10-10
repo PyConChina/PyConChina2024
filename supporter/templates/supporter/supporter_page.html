@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/supporter.css' %}">
@@ -9,9 +9,34 @@
 {% block content %}
 <main>
     <h1 class="title">{{ page.title }}</h1>
+    {% if page.body %}
+        <div class="card">
+            <div class="card-body">
+                {{ page.body|richtext }}
+            </div>
+        </div>
+    {% endif %}
     <div class="card">
-        <div class="card-body">
-            {{ page.body }}
+        <div class="card-body supporters">
+            {% for tier in page.supporters.all %}
+                <div class="supporter-list">
+                    <h2>{{ tier.name }}</h2>
+                    <ul>
+                        {% for supporter in tier.supporters.all %}
+                            <li class="supporter">
+                                <a href="{{ supporter.url }}" target="_blank">
+                                    {% if supporter.logo %}
+                                        {% image supporter.logo width-240 %}
+                                    {% endif %}
+                                    <div class="supporter-info">
+                                        <p>{{ supporter.name }}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </main>
