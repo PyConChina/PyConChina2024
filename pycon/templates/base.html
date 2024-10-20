@@ -30,6 +30,16 @@
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?ec0b723676fab5b19a82fb79ba7ce574";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+            
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
