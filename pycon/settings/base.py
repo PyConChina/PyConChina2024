@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "talk",
     "schedule",
     "search",
+    "staff",
     "bakery",
     "wagtailbakery",
     "wagtail.contrib.forms",

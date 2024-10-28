@@ -1,11 +1,17 @@
 {% load wagtailcore_tags navigation_tags %}
+
 <nav class="navbar">
+    <!-- Add button for mobile menu -->
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     {% get_site_root as site_root %}
-    <ul>
+    <ul class="nav-links">
         <li><a href="{% pageurl site_root %}" class="nav-link">首页</a></li>
         {% for child in site_root.get_children.live.in_menu %}
             <li><a href="{% pageurl child %}" class="nav-link">{{ child.title }}</a></li>
         {% endfor %}
-        <li><a href="https://jsj.top/f/BYWgq6" class="nav-link">志愿者</a></li>
     </ul>
 </nav>

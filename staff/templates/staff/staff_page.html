@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+<style>
+    .staff-list > ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .staff {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-direction: column;
+    }
+    .staff > img {
+        border-radius: 50%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1 class="title">{{ page.title }}</h1>
+    {% if page.body %}
+        <div class="card">
+            <div class="card-body">
+                {{ page.body|richtext }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="card">
+        <div class="card-body supporters">
+            {% for category in page.staff_categories.all %}
+                <div class="staff-list">
+                    <h3>{{ category.name }}</h3>
+                    <ul>
+                        {% for staff in category.staff.all %}
+                            <li class="staff">
+                                {% if staff.avatar %}
+                                    {% image staff.avatar width-180 %}
+                                {% endif %}
+                                <div>
+                                    {{ staff.name }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
