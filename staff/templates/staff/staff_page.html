@@ -9,7 +9,6 @@
         padding: 0;
         display: flex;
         flex-wrap: wrap;
-        gap: 2rem;
     }
 
     .staff {
@@ -20,6 +19,7 @@
     }
     .staff > img {
         border-radius: 50%;
+        margin-bottom: 1rem;
     }
     .staff-bio {
         font-size: 0.85em;
@@ -46,7 +46,7 @@
                         {% for staff in category.staff.all %}
                             <li class="staff">
                                 {% if staff.avatar %}
-                                    {% image staff.avatar width-180 %}
+                                    {% image staff.avatar fill-180x180 %}
                                 {% endif %}
                                 <div>
                                     {{ staff.name }}
