@@ -36,7 +36,7 @@ class StaffCategory(Orderable, ClusterableModel):
 @register_snippet
 class Staff(models.Model):
     name = models.CharField(max_length=32)
-    email = models.EmailField(blank=True)
+    bio = models.CharField(max_length=255, blank=True)
     avatar = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -47,7 +47,7 @@ class Staff(models.Model):
 
     panels = [
         FieldPanel("name"),
-        FieldPanel("email"),
+        FieldPanel("bio"),
         FieldPanel("avatar"),
     ]
 

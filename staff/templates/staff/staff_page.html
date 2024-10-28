@@ -21,6 +21,9 @@
     .staff > img {
         border-radius: 50%;
     }
+    .staff-bio {
+        font-size: 0.85em;
+    }
 </style>
 {% endblock %}
 
@@ -48,6 +51,9 @@
                                 <div>
                                     {{ staff.name }}
                                 </div>
+                                {% if staff.bio %}
+                                    <div class="staff-bio">{{ staff.bio }}</div>
+                                {% endif %}
                             </li>
                         {% endfor %}
                     </ul>
