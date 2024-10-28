@@ -39,12 +39,10 @@ a {
     color: #3776ab; /* Python blue */
     text-decoration: none;
     transition: color 0.3s ease;
-    border-bottom: 1px solid transparent;
 }
 
 a:hover {
     color: #ffd43b; /* Python yellow */
-    border-bottom-color: #ffd43b;
 }
 
 main {
@@ -170,7 +168,6 @@ footer a {
 
 footer a:hover {
     color: #ffd43b;
-    border-bottom-color: transparent;
 }
 
 footer i {

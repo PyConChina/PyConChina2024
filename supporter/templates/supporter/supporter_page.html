@@ -10,7 +10,7 @@
 <main>
     <h1 class="title">{{ page.title }}</h1>
     {% if page.body %}
-        <div class="card">
+        <div class="card content">
             <div class="card-body">
                 {{ page.body|richtext }}
             </div>
@@ -30,6 +30,9 @@
                                     {% endif %}
                                     <div class="supporter-info">
                                         <p>{{ supporter.name }}</p>
+                                        {% if supporter.description %}
+                                            <p>{{ supporter.description }}</p>
+                                        {% endif %}
                                     </div>
                                 </a>
                             </li>
