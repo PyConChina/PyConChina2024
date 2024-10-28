@@ -51,7 +51,7 @@
     font-weight: bold;
 }
 
-.supporter-list .supporter-info p:last-child {
+.supporter-list .supporter-info p:nth-child(2) {
     font-size: 0.85em;
 }
 
