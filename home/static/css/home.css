@@ -15,7 +15,13 @@
     margin-bottom: 25px;
 }
 
-.cta-button {
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-buttons > a {
     display: inline-block;
     padding: 15px 30px;
     font-size: 1.2rem; /* Adjusted to use rem units */
@@ -27,7 +33,7 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.cta-button:hover {
+.cta-buttons > a:hover {
     background-color: #ffd43b; /* Python yellow */
     color: #3776ab;
     transform: translateY(-2px);

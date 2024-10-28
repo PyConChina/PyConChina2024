@@ -11,7 +11,11 @@
 <section class="banner">
     <h1>PyCon China 2024</h1>
     <p>{{ page.date }}・{{ page.venue }}</p>
-    <a href="#" class="cta-button">敬请期待</a>
+    <div class="cta-buttons">
+        {% for link in page.links.all %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+    </div>
 </section>
 <main>
     <div class="card">
