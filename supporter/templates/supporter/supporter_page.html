@@ -24,7 +24,7 @@
                     <ul>
                         {% for supporter in tier.supporters.all %}
                             <li class="supporter">
-                                <a href="{{ supporter.url }}" target="_blank">
+                                <a href="{{ supporter.url|default:'#' }}" {% if supporter.url %}target="_blank"{% endif %}>
                                     {% if supporter.logo %}
                                         {% image supporter.logo width-240 %}
                                     {% endif %}
