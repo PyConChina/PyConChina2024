@@ -230,6 +230,10 @@ footer i {
     border-bottom: 1px solid #e0e0e0;
 }
 
+.card-body {
+    overflow-x: auto;
+}
+
 @media (min-width: 992px) {
     .card {
         padding: 1rem 2rem;
@@ -260,7 +264,6 @@ footer i {
     border-radius: 0.25rem;
     color: #fff;
     margin-left: 0.5rem;
-    font-size: 1rem;
 }
 
 .talk-badge.keynote {

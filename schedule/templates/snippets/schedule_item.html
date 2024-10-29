@@ -1,0 +1,26 @@
+{% load site wagtailcore_tags %}
+
+<div
+    class="schedule-table-item"
+    style="
+        grid-row-start: {{ span.0|divide:"5"|add:"2" }}; grid-row-end: {{ span.1|divide:"5"|add:"2" }};
+        {% if index == 1 %}
+            grid-column-start: 1; grid-column-end: {{ columns|length }};
+        {% else %}
+            grid-column-start: {{ index|add:"-1" }};
+        {% endif %}
+    "
+>
+    {% if schedule.talk %}
+        <a class="schedule-item talk" href="{% pageurl schedule.talk %}" target="_blank">
+            <div class="schedule-item-span">{{ schedule.start_time|time:"H:i" }} - {{ schedule.end_time|time:"H:i" }}</div>
+            <div class="schedule-item-badge">{% include "snippets/badge.html" with page=schedule.talk %}</div>
+            <div class="schedule-item-title">{{ schedule.talk.title }}</div>
+        </a>
+    {% else %}
+        <div class="schedule-item misc">
+            <div class="schedule-item-span">{{ schedule.start_time|time:"H:i" }} - {{ schedule.end_time|time:"H:i" }}</div>
+            <div>{{ schedule.name }}</div>
+        </div>
+    {% endif %}
+</div>

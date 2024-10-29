@@ -10,7 +10,7 @@
 {% block content %}
 <section class="banner">
     <h1>PyCon China 2024</h1>
-    <p>{{ page.date }}・{{ page.venue }}</p>
+    <p>{{ page.date|date:"Y-m-d" }}・{{ page.venue }}</p>
     <div class="cta-buttons">
         {% for link in page.links.all %}
             <a href="{{ link.url }}">{{ link.title }}</a>

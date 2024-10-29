@@ -35,14 +35,7 @@
     <h1 class="title">
         {{ page.title }}
     </h1>
-    <span class="talk-badge {{ page.type }}">
-        {% if page.type == 'lightning' %}
-            <i class="fa-solid fa-bolt"></i>
-        {% elif page.type == 'keynote' %}
-            <i class="fa-solid fa-medal"></i>
-        {% endif %}
-        {{ page.type|title }}
-    </span>
+    {% include "snippets/badge.html" %}
     <div class="card content">
         <div class="card-body">
             <ul class="authors">

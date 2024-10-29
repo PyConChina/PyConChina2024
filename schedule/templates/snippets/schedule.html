@@ -1,0 +1,22 @@
+{% load site %}
+
+<div class="schedule-list">
+    <div class="schedule-list-date">{{ date|date:"Y-m-d" }}</div>
+    {% with columns=rooms.keys start_time=rooms.none_type.0.start_time %}
+    <div class="schedule-table" style="grid-template-columns: repeat({{ columns|length|add:"-1" }}, 1fr)">
+        {% for room in columns %}
+            {% if room != "none_type" %}
+                <div class="schedule-table-header">{{ room }}</div>
+            {% endif %}
+        {% endfor %}
+        {% for room, schedules in rooms.items %}
+            {% with index=forloop.counter %}
+                {% for schedule in schedules %}
+                    {% get_span schedule start_time as span %}
+                    {% include "snippets/schedule_item.html" %}
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+    {% endwith %}
+</div>

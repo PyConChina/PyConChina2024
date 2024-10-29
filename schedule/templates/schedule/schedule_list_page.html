@@ -1,13 +1,25 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/schedule.css' %}">
+{% endblock %}
 
 {% block content %}
 <main>
     <h1 class="title">{{ page.title }}</h1>
+    {% if page.body %}
+        <div class="card">
+            <div class="card-body content">
+                {{ page.body|richtext }}
+            </div>
+        </div>
+    {% endif %}
     <div class="card">
-        <div class="card-body content">
-            {{ page.body|richtext }}
+        <div class="card-body">
+           {% for date, rooms in page.grouped_schedules.items %}
+             {% include "snippets/schedule.html" %}
+           {% endfor %}
         </div>
     </div>
 </main>

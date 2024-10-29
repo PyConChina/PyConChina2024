@@ -33,17 +33,10 @@
     {% endif %}
     {% for child in page.get_children %}
         <div class="card">
-            <h2 class="card-header">
+            <h3 class="card-header">
                 <a href="{% pageurl child %}">{{ child.title }}</a>
-                <span class="talk-badge {{ child.specific.type }}">
-                    {% if child.specific.type == 'lightning' %}
-                        <i class="fa-solid fa-bolt"></i>
-                    {% elif child.specific.type == 'keynote' %}
-                        <i class="fa-solid fa-medal"></i>
-                    {% endif %}
-                    {{ child.specific.type|title }}
-                </span>
-            </h2>
+                {% include "snippets/badge.html" with page=child.specific %}
+            </h3>
             <div class="card-body content">
                 <div class="talk-item">
                     <div>

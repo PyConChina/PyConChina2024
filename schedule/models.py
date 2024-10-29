@@ -1,4 +1,9 @@
+from __future__ import annotations
+
+from datetime import date
+
 from django.db import models
+from django.db.models import QuerySet
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page, ParentalKey
@@ -14,6 +19,15 @@ class ScheduleListPage(Page):
         FieldPanel("body"),
         InlinePanel("schedules", heading="Schedules", label="Schedules"),
     ]
+
+    def grouped_schedules(self) -> dict[date, dict[Room | str, list[Schedule]]]:
+        result: dict[date, dict[Room | str, list[Schedule]]] = {}
+        schedules: QuerySet[Schedule] = self.schedules.order_by("date", "start_time")
+        for schedule in schedules:
+            result.setdefault(schedule.date, {}).setdefault(
+                schedule.room or "none_type", []
+            ).append(schedule)
+        return result
 
 
 class Schedule(Orderable):
