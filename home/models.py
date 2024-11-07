@@ -23,6 +23,15 @@ class HomePage(Page):
     ]
 
 
+class ArticlePage(Page):
+    parent_page_types = ["home.HomePage"]
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+    ]
+
+
 class RelatedLink(Orderable):
     page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name="links")
     title = models.CharField(max_length=255)
