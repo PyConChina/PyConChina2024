@@ -18,12 +18,15 @@
     </div>
 </section>
 <main>
+    {% for block in page.body %}
     <div class="card">
+        <div class="card-header">{{ block.value.title }}</div>
         <div class="card-body">
             <div class="content">
-                {{ page.about|richtext }}
+                {{ block.value.paragraph|richtext }}
             </div>
         </div>
     </div>
+    {% endfor %}
 </main>
 {% endblock %}
