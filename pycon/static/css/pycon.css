@@ -10,8 +10,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #009cdf;
-    background-image: 
-        linear-gradient(to right, 
+    background-image:
+        linear-gradient(to right,
             rgba(0, 156, 223, 0) 0%,
             rgba(0, 156, 223, 0) 20%,
             rgba(0, 156, 223, 1) 40%,
@@ -93,6 +93,16 @@ main {
     float: right;
     margin-left: 15px;
     margin-bottom: 10px;
+}
+
+.richtext-image.left {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.richtext-image.full-width {
+    width: 100%;
 }
 
 .navbar {
@@ -204,11 +214,11 @@ footer i {
     .footer-content {
         flex-direction: column;
     }
-    
+
     .footer-section {
         margin-bottom: 1rem;
     }
-    
+
     .past-conferences {
         justify-content: center;
     }
