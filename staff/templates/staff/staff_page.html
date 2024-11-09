@@ -38,29 +38,29 @@
             </div>
         </div>
     {% endif %}
+    {% for category in page.staff_categories.all %}
     <div class="card">
-        <div class="card-body supporters">
-            {% for category in page.staff_categories.all %}
-                <div class="staff-list">
-                    <h3>{{ category.name }}</h3>
-                    <ul>
-                        {% for staff in category.staff.all %}
-                            <li class="staff">
-                                {% if staff.avatar %}
-                                    {% image staff.avatar fill-180x180 %}
-                                {% endif %}
-                                <div>
-                                    {{ staff.name }}
-                                </div>
-                                {% if staff.bio %}
-                                    <div class="staff-bio">{{ staff.bio }}</div>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endfor %}
+        <div class="card-header">{{ category.name }}</div>
+        <div class="card-body">
+            <div class="staff-list">
+                <ul>
+                    {% for staff in category.staff.all %}
+                        <li class="staff">
+                            {% if staff.avatar %}
+                                {% image staff.avatar fill-180x180 %}
+                            {% endif %}
+                            <div>
+                                {{ staff.name }}
+                            </div>
+                            {% if staff.bio %}
+                                <div class="staff-bio">{{ staff.bio }}</div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
+    {% endfor %}
 </main>
 {% endblock %}
