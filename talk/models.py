@@ -11,6 +11,7 @@ class TalkType(models.TextChoices):
     KEYNOTE = "keynote", "主题"
     LIGHTNING = "lightning", "闪电"
     ROUNDTABLE = "roundtable", "圆桌"
+    WORKSHOP = "workshop", "工作坊"
 
 
 # Create your models here.
