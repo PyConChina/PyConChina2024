@@ -23,6 +23,11 @@ class TalkListPage(Page):
         FieldPanel("body"),
     ]
 
+    def get_talks(self):
+        return self.get_children().filter(
+            talkpage__type__in=(TalkType.KEYNOTE, TalkType.LIGHTNING)
+        )
+
 
 class TalkPage(Page):
     parent_page_types = ["talk.TalkListPage"]
