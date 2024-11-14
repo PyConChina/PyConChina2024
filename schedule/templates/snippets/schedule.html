@@ -6,7 +6,11 @@
     <div class="schedule-table" style="grid-template-columns: repeat({{ columns|length|add:"-1" }}, 1fr)">
         {% for room in columns %}
             {% if room != "none_type" %}
-                <div class="schedule-table-header">{{ room }}</div>
+                <div class="schedule-table-header">
+                  <span style="font-weight: bold; color: #009cdf;">{{ room.name }}</span>
+                  {% if room.address %}<span style="font-size: 0.9em;">{{ room.address }}</span>{% endif %}
+                  {% if room.host %}<span style="font-size: 0.9em;">主持人：{{ room.host }}</span>{% endif %}
+                </div>
             {% endif %}
         {% endfor %}
         {% for room, schedules in rooms.items %}

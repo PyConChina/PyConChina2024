@@ -8,8 +8,9 @@ from wagtail.snippets.models import register_snippet
 
 
 class TalkType(models.TextChoices):
-    KEYNOTE = "keynote", "Keynote"
-    LIGHTNING = "lightning", "Lightning"
+    KEYNOTE = "keynote", "主题"
+    LIGHTNING = "lightning", "闪电"
+    ROUNDTABLE = "roundtable", "圆桌"
 
 
 # Create your models here.

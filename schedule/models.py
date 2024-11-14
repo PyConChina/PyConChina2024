@@ -76,7 +76,8 @@ class Room(models.Model):
     address = models.CharField(
         max_length=255, help_text="Address of the room", blank=True
     )
-    panels = [FieldPanel("name"), FieldPanel("address")]
+    host = models.CharField(max_length=32, help_text="Host of the room", blank=True)
+    panels = [FieldPanel("name"), FieldPanel("address"), FieldPanel("host")]
 
     def __str__(self) -> str:
         return self.name
