@@ -55,7 +55,7 @@
                     </div>
                     {% with first_author=child.specific.authors.all.first %}
                         {% if first_author.avatar %}
-                            {% image first_author.avatar width-240 %}
+                            {% image first_author.avatar fill-240x240 %}
                         {% endif %}
                     {% endwith %}
                 </div>

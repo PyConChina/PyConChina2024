@@ -49,7 +49,7 @@
                             <div class="content">{{ author.introduction|richtext }}</div>
                         </div>
                         {% if author.avatar %}
-                            {% image author.avatar width-240 %}
+                            {% image author.avatar fill-240x240 %}
                         {% endif %}
                     </li>
                 {% endfor %}
