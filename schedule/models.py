@@ -49,7 +49,11 @@ class ScheduleListPage(RoutablePageMixin, Page):
             event.add("dtstamp", datetime.now(timezone.utc))
             event.add("location", location)
             if schedule.talk:
-                event.add("description", schedule.talk.body)
+                event.add(
+                    "description",
+                    f"演讲人：{schedule.talk.authors.first().name}\n\n{schedule.talk.body}",
+                )
+                event.add("url", request.build_absolute_uri(schedule.talk.url))
             cal.add_component(event)
 
         response = HttpResponse(cal.to_ical(), content_type="text/calendar")
