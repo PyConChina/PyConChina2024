@@ -1,17 +1,19 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime, timezone
 
 from django.db import models
 from django.db.models import QuerySet
+from django.http import HttpResponse
 from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.contrib.routable_page.models import RoutablePageMixin, path
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page, ParentalKey
 from wagtail.snippets.models import register_snippet
 
 
 # Create your models here.
-class ScheduleListPage(Page):
+class ScheduleListPage(RoutablePageMixin, Page):
     parent_page_types = ["home.HomePage"]
     body = RichTextField(blank=True)
 
@@ -28,6 +30,31 @@ class ScheduleListPage(Page):
                 schedule.room or "none_type", []
             ).append(schedule)
         return result
+
+    @path("ical/")
+    def ical(self, request):
+        from icalendar import Calendar, Event
+
+        cal = Calendar()
+        schedules: QuerySet[Schedule] = self.schedules.order_by("date", "start_time")
+        for schedule in schedules:
+            event = Event()
+            if schedule.room:
+                location = f"{schedule.room.name} ({schedule.room.address})"
+            else:
+                location = "主会场"
+            event.add("summary", str(schedule))
+            event.add("dtstart", datetime.combine(schedule.date, schedule.start_time))
+            event.add("dtend", datetime.combine(schedule.date, schedule.start_time))
+            event.add("dtstamp", datetime.now(timezone.utc))
+            event.add("location", location)
+            if schedule.talk:
+                event.add("description", schedule.talk.body)
+            cal.add_component(event)
+
+        response = HttpResponse(cal.to_ical(), content_type="text/calendar")
+        response["Content-Disposition"] = 'attachment; filename="pycon-china-2024.ics"'
+        return response
 
 
 class Schedule(Orderable):

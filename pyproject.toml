@@ -9,6 +9,7 @@ dependencies = [
     "wagtail>=6.2.2",
     "gunicorn>=23.0.0",
     "wagtail-bakery>=0.8.0",
+    "icalendar>=6.0.1",
 ]
 requires-python = ">=3.12"
 readme = "README.md"

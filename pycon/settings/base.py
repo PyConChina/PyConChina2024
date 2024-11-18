@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "staff",
     "bakery",
     "wagtailbakery",
+    "wagtail.contrib.routable_page",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.settings",

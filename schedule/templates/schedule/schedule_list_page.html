@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/schedule.css' %}">
@@ -17,6 +17,7 @@
     {% endif %}
     <div class="card">
         <div class="card-body">
+          <a href="{% routablepageurl page 'ical' %}" class="btn btn-primary">下载日历(.ical)</a>
            {% for date, rooms in page.grouped_schedules.items %}
              {% include "snippets/schedule.html" %}
            {% endfor %}
