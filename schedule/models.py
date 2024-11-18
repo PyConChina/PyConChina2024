@@ -34,7 +34,9 @@ class ScheduleListPage(RoutablePageMixin, Page):
 
     @path("ical/")
     def ical(self, request):
-        from icalendar import Calendar, Event
+        from ics import Calendar, Event
+        from ics.contentline import ContentLine
+        from uuid import uuid4
 
         cal = Calendar()
         schedules: QuerySet[Schedule] = self.schedules.order_by("date", "start_time")
@@ -44,26 +46,20 @@ class ScheduleListPage(RoutablePageMixin, Page):
                 location = f"{schedule.room.name} ({schedule.room.address})"
             else:
                 location = "主会场"
-            event.add("summary", str(schedule))
-            event.add(
-                "dtstart",
-                make_aware(datetime.combine(schedule.date, schedule.start_time)),
+            event.uid = str(uuid4())
+            event.extra.append(ContentLine("SUMMARY", str(schedule)))
+            event.begin = make_aware(
+                datetime.combine(schedule.date, schedule.start_time)
             )
-            event.add(
-                "dtend",
-                make_aware(datetime.combine(schedule.date, schedule.end_time)),
-            )
-            event.add("dtstamp", datetime.now(timezone.utc))
+            event.end = make_aware(datetime.combine(schedule.date, schedule.end_time))
+            event.location = location
             event.add("location", location)
             if schedule.talk:
-                event.add(
-                    "description",
-                    f"演讲人：{schedule.talk.authors.first().name}\n\n{schedule.talk.body}",
-                )
-                event.add("url", request.build_absolute_uri(schedule.talk.url))
-            cal.add_component(event)
+                event.description = f"演讲人：{schedule.talk.authors.first().name}\n\n{schedule.talk.body}"
+                event.url = request.build_absolute_uri(schedule.talk.url)
+            cal.events.append(event)
 
-        response = HttpResponse(cal.to_ical(), content_type="text/calendar")
+        response = HttpResponse(cal.serialize(), content_type="text/calendar")
         response["Content-Disposition"] = 'attachment; filename="pycon-china-2024.ics"'
         return response
 

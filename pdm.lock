@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:ff310abfbe0bf204a301ef6aae741dba1e5a5fdd97f7a32d92c783d6024b4abd"
+content_hash = "sha256:819117275ae4644f36413d7bffe5c6291a7f71bd789b36b5b2a053496846bfce"
 
 [[metadata.targets]]
 requires_python = ">=3.12"
@@ -43,6 +43,20 @@ dependencies = [
 files = [
     {file = "asgiref-3.8.1-py3-none-any.whl", hash = "sha256:3e1e3ecc849832fe52ccf2cb6686b7a55f82bb1d6aee72a58826471390335e47"},
     {file = "asgiref-3.8.1.tar.gz", hash = "sha256:c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590"},
+]
+
+[[package]]
+name = "attrs"
+version = "24.2.0"
+requires_python = ">=3.7"
+summary = "Classes Without Boilerplate"
+groups = ["default"]
+dependencies = [
+    "importlib-metadata; python_version < \"3.8\"",
+]
+files = [
+    {file = "attrs-24.2.0-py3-none-any.whl", hash = "sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2"},
+    {file = "attrs-24.2.0.tar.gz", hash = "sha256:5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346"},
 ]
 
 [[package]]
@@ -322,19 +336,32 @@ files = [
 ]
 
 [[package]]
-name = "icalendar"
-version = "6.0.1"
+name = "ics"
+version = "0.8.0.dev0"
 requires_python = ">=3.8"
-summary = "iCalendar parser/generator"
+git = "https://www.github.com/ics-py/ics-py.git"
+ref = "main"
+revision = "e217aae4961e36415c782cae4df439b59790114b"
+summary = "Pythonic iCalendar (RFC 5545) Parser"
 groups = ["default"]
 dependencies = [
-    "backports-zoneinfo; python_version < \"3.9\"",
-    "python-dateutil",
-    "tzdata",
+    "attrs>=20.3",
+    "ics-vtimezones>=2020.1",
+    "python-dateutil>=2.8",
+]
+
+[[package]]
+name = "ics-vtimezones"
+version = "2020.2"
+requires_python = ">=3.7,<4.0"
+summary = "iCalendar vTimezone Data"
+groups = ["default"]
+dependencies = [
+    "importlib-resources>=1.4",
 ]
 files = [
-    {file = "icalendar-6.0.1-py3-none-any.whl", hash = "sha256:9bf3d69203bd0366a9a29a8b0e220574580b86d7918afcb628fc6920287922f3"},
-    {file = "icalendar-6.0.1.tar.gz", hash = "sha256:1ff44825d7b41c3f77eac9e09cc67a770dd3c2377430c23b0eb7d91603088892"},
+    {file = "ics_vtimezones-2020.2-py3-none-any.whl", hash = "sha256:e26de1a7e732b53f23bce88431ce6b2db59d03aad72f47d5785bfa3f56cdf118"},
+    {file = "ics_vtimezones-2020.2.tar.gz", hash = "sha256:ee02fb3bb7df7e2e60ea11ad07ca30d3fee4d40929ae496651f76b76dc1cac73"},
 ]
 
 [[package]]
@@ -346,6 +373,20 @@ groups = ["default"]
 files = [
     {file = "idna-3.10-py3-none-any.whl", hash = "sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3"},
     {file = "idna-3.10.tar.gz", hash = "sha256:12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"},
+]
+
+[[package]]
+name = "importlib-resources"
+version = "6.4.5"
+requires_python = ">=3.8"
+summary = "Read resources from Python packages"
+groups = ["default"]
+dependencies = [
+    "zipp>=3.1.0; python_version < \"3.10\"",
+]
+files = [
+    {file = "importlib_resources-6.4.5-py3-none-any.whl", hash = "sha256:ac29d5f956f01d5e4bb63102a5a19957f1b9175e45649977264a1416783bb717"},
+    {file = "importlib_resources-6.4.5.tar.gz", hash = "sha256:980862a1d16c9e147a59603677fa2aa5fd82b87f223b6cb870695bcfce830065"},
 ]
 
 [[package]]
@@ -587,6 +628,7 @@ version = "2024.2"
 requires_python = ">=2"
 summary = "Provider of IANA time zone data"
 groups = ["default"]
+marker = "sys_platform == \"win32\""
 files = [
     {file = "tzdata-2024.2-py2.py3-none-any.whl", hash = "sha256:a48093786cdcde33cad18c2555e8532f34422074448fbc874186f0abd79565cd"},
     {file = "tzdata-2024.2.tar.gz", hash = "sha256:7d85cc416e9382e69095b7bdf4afd9e3880418a2413feec7069d533d6b4e31cc"},
