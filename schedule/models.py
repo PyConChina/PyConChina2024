@@ -47,13 +47,12 @@ class ScheduleListPage(RoutablePageMixin, Page):
             else:
                 location = "主会场"
             event.uid = str(uuid4())
-            event.extra.append(ContentLine("SUMMARY", str(schedule)))
+            event.extra.append(ContentLine(name="SUMMARY", value=str(schedule)))
             event.begin = make_aware(
                 datetime.combine(schedule.date, schedule.start_time)
             )
             event.end = make_aware(datetime.combine(schedule.date, schedule.end_time))
             event.location = location
-            event.add("location", location)
             if schedule.talk:
                 event.description = f"演讲人：{schedule.talk.authors.first().name}\n\n{schedule.talk.body}"
                 event.url = request.build_absolute_uri(schedule.talk.url)
