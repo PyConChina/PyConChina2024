@@ -45,7 +45,7 @@ class ScheduleListPage(RoutablePageMixin, Page):
                 location = "主会场"
             event.add("summary", str(schedule))
             event.add("dtstart", datetime.combine(schedule.date, schedule.start_time))
-            event.add("dtend", datetime.combine(schedule.date, schedule.start_time))
+            event.add("dtend", datetime.combine(schedule.date, schedule.end_time))
             event.add("dtstamp", datetime.now(timezone.utc))
             event.add("location", location)
             if schedule.talk:
