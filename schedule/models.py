@@ -5,6 +5,7 @@ from datetime import date, datetime, timezone
 from django.db import models
 from django.db.models import QuerySet
 from django.http import HttpResponse
+from django.utils.timezone import make_aware
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, path
 from wagtail.fields import RichTextField
@@ -44,8 +45,14 @@ class ScheduleListPage(RoutablePageMixin, Page):
             else:
                 location = "主会场"
             event.add("summary", str(schedule))
-            event.add("dtstart", datetime.combine(schedule.date, schedule.start_time))
-            event.add("dtend", datetime.combine(schedule.date, schedule.end_time))
+            event.add(
+                "dtstart",
+                make_aware(datetime.combine(schedule.date, schedule.start_time)),
+            )
+            event.add(
+                "dtend",
+                make_aware(datetime.combine(schedule.date, schedule.end_time)),
+            )
             event.add("dtstamp", datetime.now(timezone.utc))
             event.add("location", location)
             if schedule.talk:
