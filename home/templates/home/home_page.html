@@ -9,8 +9,11 @@
 
 {% block content %}
 <section class="banner">
-    <h1>PyCon China 2024</h1>
-    <p>{{ page.date|date:"Y-m-d" }}・{{ page.venue }}</p>
+    <div class="dot-font">
+      <h1>PyCon China 2024</h1>
+      <p>&gt;&gt; {{ page.date|date:"Y/m/d" }} {{ page.venue }}</p>
+      <p>&gt;&gt; For good. For fun.</p>
+    </div>
     <div class="cta-buttons">
         {% for link in page.links.all %}
             <a href="{{ link.url }}">{{ link.title }}</a>

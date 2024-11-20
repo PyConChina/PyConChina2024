@@ -1,5 +1,15 @@
+@font-face {
+  font-family: "JF-Dot";
+  src: url("../fonts/JF-Dot-MPlusS10B.ttf") format("truetype");
+  font-weight: bold;
+}
+
 html {
     font-size: 18px; /* Increased base font size */
+}
+
+.dot-font {
+    font-family: "JF-Dot", sans-serif;
 }
 
 body {
@@ -263,6 +273,7 @@ footer i {
     font-weight: bold;
     border-radius: 10px;  /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    font-family: "JF-Dot", sans-serif;  /* Custom font */
 }
 
 .talk-badge {
