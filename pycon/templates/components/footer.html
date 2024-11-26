@@ -6,8 +6,6 @@
             {% with social_links=settings.base.NavigationSettings.social_links %}
                 {% if social_links.exists %}
                     <p>
-                        联系方式:
-
                         {% for link in social_links.all %}
                           <a href="{{ link.url }}" aria-label="{{ link.name }}"><i class="{{ link.icon }}"></i></a>
                         {% endfor %}
